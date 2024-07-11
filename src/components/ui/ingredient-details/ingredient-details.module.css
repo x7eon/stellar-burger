@@ -22,3 +22,7 @@
   flex-direction: column;
   align-items: center;
 }
+
+.fullpage {
+  margin: 120px auto 0;
+}

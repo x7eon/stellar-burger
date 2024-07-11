@@ -1,8 +1,8 @@
 import { FC, memo, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-
 import { TModalProps } from './type';
 import { ModalUI } from '@ui';
+import { useLocation, useParams } from 'react-router-dom';
 
 const modalRoot = document.getElementById('modals');
 
@@ -18,8 +18,18 @@ export const Modal: FC<TModalProps> = memo(({ title, onClose, children }) => {
     };
   }, [onClose]);
 
+  const { pathname } = useLocation();
+  const { number } = useParams();
+
   return ReactDOM.createPortal(
-    <ModalUI title={title} onClose={onClose}>
+    <ModalUI
+      title={
+        pathname.includes('feed') || pathname.includes('profile/')
+          ? `${title} #${number}`
+          : title
+      }
+      onClose={onClose}
+    >
       {children}
     </ModalUI>,
     modalRoot as HTMLDivElement
