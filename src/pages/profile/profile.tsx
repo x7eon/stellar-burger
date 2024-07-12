@@ -1,5 +1,12 @@
 import { ProfileUI } from '@ui-pages';
-import { FC, SyntheticEvent, useEffect, useState } from 'react';
+import {
+  FC,
+  SyntheticEvent,
+  FormEvent,
+  ChangeEvent,
+  useEffect,
+  useState
+} from 'react';
 import { useSelector } from '../../services/store';
 import { getUserSelector } from '../../services/auth/slice';
 import { useDispatch } from '../../services/store';
@@ -31,7 +38,7 @@ export const Profile: FC = () => {
     formValue.email !== user?.email ||
     !!formValue.password;
 
-  const handleSubmit = (e: SyntheticEvent) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     dispatch(updateUserData(formValue));
   };
@@ -45,7 +52,7 @@ export const Profile: FC = () => {
     });
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormValue((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value

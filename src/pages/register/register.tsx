@@ -1,4 +1,4 @@
-import { FC, SyntheticEvent, useState } from 'react';
+import { FC, FormEvent, SyntheticEvent, useState } from 'react';
 import { RegisterUI } from '@ui-pages';
 import { useDispatch, useSelector } from '../../services/store';
 import { registerUser } from '../../services/auth/actions';
@@ -13,7 +13,7 @@ export const Register: FC = () => {
   const dispatch = useDispatch();
   const isAuth = useSelector(isAuthSelector);
 
-  const handleSubmit = (e: SyntheticEvent) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const dataUserRegister: TRegisterData = {
       name: userName,
