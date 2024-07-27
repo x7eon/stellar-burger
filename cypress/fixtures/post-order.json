@@ -1,0 +1,10 @@
+{
+  "success": true,
+  "name": "Тестовый бургер",
+  "order": {
+      "ingredients": [],
+      "_id": "testId",
+      "owner": {},
+      "number": 15
+  }
+}
