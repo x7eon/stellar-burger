@@ -9,7 +9,7 @@ import {
 } from './actions';
 import { RootState } from '../store';
 
-type TInitialState = {
+export type TInitialState = {
   user: TUser;
   isAuthCheked: boolean;
   isAuth: boolean;
