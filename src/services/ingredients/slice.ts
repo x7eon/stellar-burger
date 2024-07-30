@@ -3,7 +3,7 @@ import { TIngredient } from '@utils-types';
 import { getIngredients } from './action';
 import { RootState } from '../store';
 
-type TInitialState = {
+export type TInitialState = {
   ingredients: TIngredient[];
   isIngredientsLoading: boolean;
   error: string | undefined;

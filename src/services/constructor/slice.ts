@@ -3,7 +3,7 @@ import { TConstructorIngredient, TIngredient } from '../../utils/types';
 import { v4 as uuidv4 } from 'uuid';
 import { RootState } from '../store';
 
-type TInitialState = {
+export type TInitialState = {
   bun: TIngredient | null;
   ingredients: TConstructorIngredient[];
 };

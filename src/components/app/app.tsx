@@ -105,7 +105,11 @@ const App = () => {
           <Route
             path='/ingredients/:id'
             element={
-              <Modal onClose={() => navigate('/')} title='Детали ингридиента'>
+              <Modal
+                onClose={() => navigate('/')}
+                title='Детали ингридиента'
+                data-cy='ingredient-modal'
+              >
                 <IngredientDetails />
               </Modal>
             }
