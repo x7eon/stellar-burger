@@ -1,10 +1,19 @@
 describe('проверка добавления ингридиента в конструктор', function () {
   beforeEach(function () {
     cy.intercept('GET', 'api/ingredients', { fixture: 'ingredients.json' });
-    cy.visit('http://localhost:4000');
+    cy.visit('/');
   });
 
   it('проверка добавлении булочки', function () {
+    const constructorBunTopEmpty = cy.get(
+      '[data-cy=constructor-bun-top-empty]'
+    );
+    const constructorBunBottomEmpty = cy.get(
+      '[data-cy=constructor-bun-bottom-empty]'
+    );
+    constructorBunTopEmpty.should('exist');
+    constructorBunBottomEmpty.should('exist');
+
     const bunIgredientsElem = cy.get('[data-cy=bun-ingredients]');
     bunIgredientsElem.contains('Добавить').click();
 
@@ -34,7 +43,7 @@ describe('проверка оформления заказа', function () {
       JSON.stringify('fake-refreshToken')
     );
     cy.setCookie('accessToken', 'fake-accessToken');
-    cy.visit('http://localhost:4000');
+    cy.visit('/');
   });
 
   afterEach(function () {

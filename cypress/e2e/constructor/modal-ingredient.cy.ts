@@ -1,13 +1,14 @@
 describe('проверка модального окна ингредиента', function () {
   beforeEach(function () {
     cy.intercept('GET', 'api/ingredients', { fixture: 'ingredients.json' });
-    cy.visit('http://localhost:4000');
+    cy.visit('/');
   });
 
   it('проверка открытия модального окна ингредиента', function () {
+    cy.get('[data-cy=ingredient-modal]').should('not.exist');
+
     const ingredientElems = cy.get('[data-cy=ingredients-ingredient]');
     ingredientElems.contains('Булка 1').click();
-
     const modal = cy.get('[data-cy=ingredient-modal]');
 
     modal.should('be.visible');

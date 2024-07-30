@@ -1,18 +1,11 @@
 import { expect, test, describe, jest } from '@jest/globals';
-import { combineReducers } from '@reduxjs/toolkit';
 import ingredientsReducer from './ingredients/slice';
 import constructorIngredientsReducer from './constructor/slice';
 import userReducer from './auth/slice';
 import orderReducer from './orders/slice';
+import { rootReducer } from './store';
 
 describe('[rootReducer] тест корректной настройки и работы корневого редьюсера', () => {
-  const rootReducer = combineReducers({
-    ingredients: ingredientsReducer,
-    constructorIngredients: constructorIngredientsReducer,
-    user: userReducer,
-    order: orderReducer
-  });
-
   test('тест передача неизвестного состояния, возвращается корректное начальное состояние', () => {
     const initAction = { type: 'INIT' };
     const initialState = rootReducer(undefined, initAction);
